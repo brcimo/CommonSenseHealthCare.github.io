@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHS Sample Actuarial Scenario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #005a8d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6f2f7;
+        }
+
+        .highlight {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+
+        .box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>California Commonsense Healthcare System</h1>
+        <h2>Actuarial Analysis Overview</h2>
+        <p>This document presents a high-level actuarial analysis of the California Commonsense Healthcare System (CHS) Proposal, focusing on projected revenues, expenditures, savings, and key assumptions.</p>
+      
+        <h2>I. Projected Annual Healthcare Expenditures</h2>
+        <table>
+          <tr><th>Category</th><th>Estimated Annual Cost (USD)</th></tr>
+          <tr><td>Hospital & Physician Services</td><td>$180 billion</td></tr>
+          <tr><td>Prescription Drugs</td><td>$45 billion</td></tr>
+          <tr><td>Mental Health & Substance Use</td><td>$25 billion</td></tr>
+          <tr><td>Dental & Vision</td><td>$15 billion</td></tr>
+          <tr><td>Administrative Costs</td><td>$20 billion</td></tr>
+          <tr><td>Public Health & Wellness Programs</td><td>$10 billion</td></tr>
+          <tr><th>Total</th><th>$295 billion</th></tr>
+        </table>
+      
+        <div class="chart-container">
+          <canvas id="expendituresChart"></canvas>
+        </div>
+      
+        <h2>II. Projected Annual Revenues</h2>
+        <table>
+          <tr><th>Source</th><th>Estimated Annual Revenue (USD)</th></tr>
+          <tr><td>Progressive Payroll Tax</td><td>$150 billion</td></tr>
+          <tr><td>Federal Transfers</td><td>$100 billion</td></tr>
+          <tr><td>Redirected State Funds</td><td>$30 billion</td></tr>
+          <tr><td>Employer Fees</td><td>$10 billion</td></tr>
+          <tr><td>Private Insurer Fees</td><td>$5 billion</td></tr>
+          <tr><th>Total</th><th>$295 billion</th></tr>
+        </table>
+      
+        <div class="chart-container">
+          <canvas id="revenuesChart"></canvas>
+        </div>
+      
+        <h2>III. Assumptions & Sensitivity</h2>
+        <ul>
+          <li>Healthcare inflation post-reform: 2.5%</li>
+          <li>Administrative cost reduction to 6–7%</li>
+          <li>Prescription drug savings: 30–40%</li>
+          <li>Utilization increase: 5–8% initially</li>
+          <li>SHAS efficiency savings: 10–15%</li>
+        </ul>
+      
+        <h3>Sensitivity Scenarios</h3>
+        <table>
+          <tr><th>Scenario</th><th>Outcome</th></tr>
+          <tr><td>Best Case</td><td>Surplus of $20B/year</td></tr>
+          <tr><td>Worst Case</td><td>Deficit of $10B/year</td></tr>
+          <tr><td>Break-Even</td><td>Achieved in Year 4</td></tr>
+        </table>
+      
+        <script>
+          const expendituresCtx = document.getElementById('expendituresChart');
+          new Chart(expendituresCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Hospital & Physician', 'Drugs', 'Mental Health', 'Dental & Vision', 'Admin', 'Public Health'],
+              datasets: [{
+                label: 'Annual Costs (in $B)',
+                data: [180, 45, 25, 15, 20, 10],
+                backgroundColor: '#42a5f5'
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { display: false } },
+              scales: { y: { beginAtZero: true } }
+            }
+          });
+      
+          const revenuesCtx = document.getElementById('revenuesChart');
+          new Chart(revenuesCtx, {
+            type: 'pie',
+            data: {
+              labels: ['Payroll Tax', 'Federal Transfers', 'State Funds', 'Employer Fees', 'Insurer Fees'],
+              datasets: [{
+                label: 'Annual Revenue Sources',
+                data: [150, 100, 30, 10, 5],
+                backgroundColor: ['#66bb6a', '#29b6f6', '#ffa726', '#ef5350', '#ab47bc']
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { position: 'bottom' } }
+            }
+          });
+        </script>
+</body>
+
+</html>
